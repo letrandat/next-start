@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { Providers } from "@/components/hero-ui-components";
+import AppNavBar from "@/components/app-navbar";
+import { Providers } from "@/components/hero-ui-providers";
 
 import "./globals.css";
 
@@ -23,7 +24,10 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <AppNavBar />
+          {children}
+        </Providers>
       </body>
     </html>
   );
