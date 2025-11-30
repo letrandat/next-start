@@ -1,7 +1,11 @@
+"use client";
+
+import { Button } from "@heroui/react";
+
 export default function Home() {
   return (
     <main>
-      <h1>Speed Run Next.js</h1>
+      <Button>Speed Run Next.js</Button>
     </main>
   );
 }
