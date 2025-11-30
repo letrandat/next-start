@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import React from "react";
 
 import {
@@ -13,6 +14,13 @@ import {
   NavbarMenuToggle,
 } from "@heroui/react";
 import { IconPackage } from "@tabler/icons-react";
+
+const ThemeSwitcher = dynamic(
+  () => import("./theme-switcher").then((mod) => mod.ThemeSwitcher),
+  {
+    ssr: false,
+  }
+);
 
 export default function AppNavBar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -49,9 +57,15 @@ export default function AppNavBar() {
             </Link>
           </NavbarItem>
         ))}
+        <NavbarItem>
+          <ThemeSwitcher />
+        </NavbarItem>
       </NavbarContent>
 
       <NavbarMenu>
+        <NavbarItem>
+          <ThemeSwitcher showLabel={true} />
+        </NavbarItem>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link className="w-full" href={item.href} size="lg">
